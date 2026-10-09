@@ -10,11 +10,13 @@
             "remote": true,
             "cwd": "${workspaceFolder}",
             "gdbpath": "gdb-multiarch",
-            "debugger_args": ["-nx"],
             "stopAtConnect": true,
             "valuesFormatting": "parseText",
             "preLaunchTask": "QEMU",
-            "postDebugTask": "Stop QEMU"
+            "postDebugTask": "Stop QEMU",
+            "autorun": [
+                "set output-radix 16"
+            ]
         }
     ]
 }
