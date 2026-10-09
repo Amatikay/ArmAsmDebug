@@ -1,0 +1,41 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Build",
+            "type": "shell",
+            "command": "cmake -S . -B build && cmake --build build",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "QEMU",
+            "type": "shell",
+            "dependsOn": "Build",
+            "isBackground": true,
+            "command": "echo 'QEMU started' && qemu-system-arm -M realview-pb-a8 -m 128M -nographic -s -S -kernel build/main.elf",
+            "problemMatcher": {
+                "owner": "qemu",
+                "pattern": {
+                    "regexp": "^__never_match__$"
+                },
+                "background": {
+                    "activeOnStart": true,
+                    "beginsPattern": "QEMU started",
+                    "endsPattern": "QEMU started"
+                }
+            }
+        },
+        {
+            "label": "Stop QEMU",
+            "type": "shell",
+            "command": "pkill -f qemu-system-arm || true",
+            "presentation": {
+                "reveal": "never"
+            },
+            "problemMatcher": []
+        }
+    ]
+}

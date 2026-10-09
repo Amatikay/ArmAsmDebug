@@ -1,0 +1,20 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "QEMU realview-pb-a8",
+            "type": "gdb",
+            "request": "attach",
+            "executable": "${workspaceFolder}/build/main.elf",
+            "target": ":1234",
+            "remote": true,
+            "cwd": "${workspaceFolder}",
+            "gdbpath": "gdb-multiarch",
+            "debugger_args": ["-nx"],
+            "stopAtConnect": true,
+            "valuesFormatting": "parseText",
+            "preLaunchTask": "QEMU",
+            "postDebugTask": "Stop QEMU"
+        }
+    ]
+}
