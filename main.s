@@ -1,7 +1,6 @@
 .text
 .global	_start
 
-@ The purpose of _start / main is to set up the stack for the run procedure
 _start:
         ldr sp, =__stack_top
         mov     r0, #2     /* setting up initial variable */

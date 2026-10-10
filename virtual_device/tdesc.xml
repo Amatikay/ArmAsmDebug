@@ -1,0 +1,238 @@
+<?xml version="1.0"?>
+<!DOCTYPE target SYSTEM "gdb-target.dtd">
+<target>
+  <architecture>arm</architecture>
+  <feature name="org.gnu.gdb.arm.core">
+    <enum id="arm_mode" size="4">
+      <evalue name="usr" value="16"/>
+      <evalue name="fiq" value="17"/>
+      <evalue name="irq" value="18"/>
+      <evalue name="svc" value="19"/>
+      <evalue name="mon" value="22"/>
+      <evalue name="abt" value="23"/>
+      <evalue name="hyp" value="26"/>
+      <evalue name="und" value="27"/>
+      <evalue name="sys" value="31"/>
+    </enum>
+    <flags id="cpsr_flags" size="4">
+      <field name="M"  start="0"  end="4" type="arm_mode"/>
+      <field name="T"  start="5"  end="5"/>
+      <field name="F"  start="6"  end="6"/>
+      <field name="I"  start="7"  end="7"/>
+      <field name="A"  start="8"  end="8"/>
+      <field name="E"  start="9"  end="9"/>
+      <field name="GE" start="16" end="19"/>
+      <field name="J"  start="24" end="24"/>
+      <field name="Q"  start="27" end="27"/>
+      <field name="V"  start="28" end="28"/>
+      <field name="C"  start="29" end="29"/>
+      <field name="Z"  start="30" end="30"/>
+      <field name="N"  start="31" end="31"/>
+    </flags>
+    <reg name="r0" bitsize="32" type="int" regnum="0"/>
+    <reg name="r1" bitsize="32" type="int" regnum="1"/>
+    <reg name="r2" bitsize="32" type="int" regnum="2"/>
+    <reg name="r3" bitsize="32" type="int" regnum="3"/>
+    <reg name="r4" bitsize="32" type="int" regnum="4"/>
+    <reg name="r5" bitsize="32" type="int" regnum="5"/>
+    <reg name="r6" bitsize="32" type="int" regnum="6"/>
+    <reg name="r7" bitsize="32" type="int" regnum="7"/>
+    <reg name="r8" bitsize="32" type="int" regnum="8"/>
+    <reg name="r9" bitsize="32" type="int" regnum="9"/>
+    <reg name="r10" bitsize="32" type="int" regnum="10"/>
+    <reg name="r11" bitsize="32" type="int" regnum="11"/>
+    <reg name="r12" bitsize="32" type="int" regnum="12"/>
+    <reg name="sp" bitsize="32" type="data_ptr" regnum="13"/>
+    <reg name="lr" bitsize="32" type="int" regnum="14"/>
+    <reg name="pc" bitsize="32" type="code_ptr" regnum="15"/>
+    <reg name="cpsr" bitsize="32" type="cpsr_flags" regnum="25"/>
+  </feature>
+  <feature name="org.gnu.gdb.arm.vfp">
+    <vector id="neon_uint8x8" type="uint8" count="8"/>
+    <vector id="neon_uint16x4" type="uint16" count="4"/>
+    <vector id="neon_uint32x2" type="uint32" count="2"/>
+    <vector id="neon_float32x2" type="ieee_single" count="2"/>
+    <union id="neon_d">
+      <field name="u8" type="neon_uint8x8"/>
+      <field name="u16" type="neon_uint16x4"/>
+      <field name="u32" type="neon_uint32x2"/>
+      <field name="u64" type="uint64"/>
+      <field name="f32" type="neon_float32x2"/>
+      <field name="f64" type="ieee_double"/>
+    </union>
+    <vector id="neon_uint8x16" type="uint8" count="16"/>
+    <vector id="neon_uint16x8" type="uint16" count="8"/>
+    <vector id="neon_uint32x4" type="uint32" count="4"/>
+    <vector id="neon_uint64x2" type="uint64" count="2"/>
+    <vector id="neon_float32x4" type="ieee_single" count="4"/>
+    <vector id="neon_float64x2" type="ieee_double" count="2"/>
+    <union id="neon_q">
+      <field name="u8" type="neon_uint8x16"/>
+      <field name="u16" type="neon_uint16x8"/>
+      <field name="u32" type="neon_uint32x4"/>
+      <field name="u64" type="neon_uint64x2"/>
+      <field name="f32" type="neon_float32x4"/>
+      <field name="f64" type="neon_float64x2"/>
+    </union>
+    <reg name="d0" bitsize="64" type="neon_d" regnum="26"/>
+    <reg name="d1" bitsize="64" type="neon_d" regnum="27"/>
+    <reg name="d2" bitsize="64" type="neon_d" regnum="28"/>
+    <reg name="d3" bitsize="64" type="neon_d" regnum="29"/>
+    <reg name="d4" bitsize="64" type="neon_d" regnum="30"/>
+    <reg name="d5" bitsize="64" type="neon_d" regnum="31"/>
+    <reg name="d6" bitsize="64" type="neon_d" regnum="32"/>
+    <reg name="d7" bitsize="64" type="neon_d" regnum="33"/>
+    <reg name="d8" bitsize="64" type="neon_d" regnum="34"/>
+    <reg name="d9" bitsize="64" type="neon_d" regnum="35"/>
+    <reg name="d10" bitsize="64" type="neon_d" regnum="36"/>
+    <reg name="d11" bitsize="64" type="neon_d" regnum="37"/>
+    <reg name="d12" bitsize="64" type="neon_d" regnum="38"/>
+    <reg name="d13" bitsize="64" type="neon_d" regnum="39"/>
+    <reg name="d14" bitsize="64" type="neon_d" regnum="40"/>
+    <reg name="d15" bitsize="64" type="neon_d" regnum="41"/>
+    <reg name="d16" bitsize="64" type="neon_d" regnum="42"/>
+    <reg name="d17" bitsize="64" type="neon_d" regnum="43"/>
+    <reg name="d18" bitsize="64" type="neon_d" regnum="44"/>
+    <reg name="d19" bitsize="64" type="neon_d" regnum="45"/>
+    <reg name="d20" bitsize="64" type="neon_d" regnum="46"/>
+    <reg name="d21" bitsize="64" type="neon_d" regnum="47"/>
+    <reg name="d22" bitsize="64" type="neon_d" regnum="48"/>
+    <reg name="d23" bitsize="64" type="neon_d" regnum="49"/>
+    <reg name="d24" bitsize="64" type="neon_d" regnum="50"/>
+    <reg name="d25" bitsize="64" type="neon_d" regnum="51"/>
+    <reg name="d26" bitsize="64" type="neon_d" regnum="52"/>
+    <reg name="d27" bitsize="64" type="neon_d" regnum="53"/>
+    <reg name="d28" bitsize="64" type="neon_d" regnum="54"/>
+    <reg name="d29" bitsize="64" type="neon_d" regnum="55"/>
+    <reg name="d30" bitsize="64" type="neon_d" regnum="56"/>
+    <reg name="d31" bitsize="64" type="neon_d" regnum="57"/>
+    <reg name="q0" bitsize="128" type="neon_q" regnum="58"/>
+    <reg name="q1" bitsize="128" type="neon_q" regnum="59"/>
+    <reg name="q2" bitsize="128" type="neon_q" regnum="60"/>
+    <reg name="q3" bitsize="128" type="neon_q" regnum="61"/>
+    <reg name="q4" bitsize="128" type="neon_q" regnum="62"/>
+    <reg name="q5" bitsize="128" type="neon_q" regnum="63"/>
+    <reg name="q6" bitsize="128" type="neon_q" regnum="64"/>
+    <reg name="q7" bitsize="128" type="neon_q" regnum="65"/>
+    <reg name="q8" bitsize="128" type="neon_q" regnum="66"/>
+    <reg name="q9" bitsize="128" type="neon_q" regnum="67"/>
+    <reg name="q10" bitsize="128" type="neon_q" regnum="68"/>
+    <reg name="q11" bitsize="128" type="neon_q" regnum="69"/>
+    <reg name="q12" bitsize="128" type="neon_q" regnum="70"/>
+    <reg name="q13" bitsize="128" type="neon_q" regnum="71"/>
+    <reg name="q14" bitsize="128" type="neon_q" regnum="72"/>
+    <reg name="q15" bitsize="128" type="neon_q" regnum="73"/>
+    <reg name="fpscr" bitsize="32" type="int" regnum="74" group="float"/>
+  </feature>
+  <feature name="org.qemu.gdb.arm.vfp-sysregs">
+    <reg name="fpsid" bitsize="32" type="int" regnum="75" group="float"/>
+    <reg name="fpexc" bitsize="32" type="int" regnum="76" group="float"/>
+  </feature>
+  <feature name="org.qemu.gdb.arm.sys.regs">
+    <reg name="MAIR0" bitsize="32" type="int" regnum="77" group="cp_regs"/>
+    <reg name="MAIR1" bitsize="32" type="int" regnum="78" group="cp_regs"/>
+    <reg name="DBGDTRTX" bitsize="32" type="int" regnum="79" group="cp_regs"/>
+    <reg name="DBGBVR5_EL1" bitsize="32" type="int" regnum="80" group="cp_regs"/>
+    <reg name="DBGBCR5_EL1" bitsize="32" type="int" regnum="81" group="cp_regs"/>
+    <reg name="DUMMY" bitsize="32" type="int" regnum="82" group="cp_regs"/>
+    <reg name="PMEVCNTR2" bitsize="32" type="int" regnum="83" group="cp_regs"/>
+    <reg name="PMEVCNTR0" bitsize="32" type="int" regnum="84" group="cp_regs"/>
+    <reg name="PMEVCNTR3" bitsize="32" type="int" regnum="85" group="cp_regs"/>
+    <reg name="PMEVCNTR1" bitsize="32" type="int" regnum="86" group="cp_regs"/>
+    <reg name="OSLSR_EL1" bitsize="32" type="int" regnum="87" group="cp_regs"/>
+    <reg name="AFSR0_EL1" bitsize="32" type="int" regnum="88" group="cp_regs"/>
+    <reg name="AFSR1_EL1" bitsize="32" type="int" regnum="89" group="cp_regs"/>
+    <reg name="PAR" bitsize="32" type="int" regnum="90" group="cp_regs"/>
+    <reg name="PMCCNTR" bitsize="32" type="int" regnum="91" group="cp_regs"/>
+    <reg name="DBGDIDR" bitsize="32" type="int" regnum="92" group="cp_regs"/>
+    <reg name="OSDTRRX_EL1" bitsize="32" type="int" regnum="93" group="cp_regs"/>
+    <reg name="DBGBVR0_EL1" bitsize="32" type="int" regnum="94" group="cp_regs"/>
+    <reg name="DBGBCR0_EL1" bitsize="32" type="int" regnum="95" group="cp_regs"/>
+    <reg name="DBGWVR0_EL1" bitsize="32" type="int" regnum="96" group="cp_regs"/>
+    <reg name="DBGWCR0_EL1" bitsize="32" type="int" regnum="97" group="cp_regs"/>
+    <reg name="MIDR" bitsize="32" type="int" regnum="98" group="cp_regs"/>
+    <reg name="CTR" bitsize="32" type="int" regnum="99" group="cp_regs"/>
+    <reg name="TCMTR" bitsize="32" type="int" regnum="100" group="cp_regs"/>
+    <reg name="TLBTR" bitsize="32" type="int" regnum="101" group="cp_regs"/>
+    <reg name="VBAR_EL1" bitsize="32" type="int" regnum="102" group="cp_regs"/>
+    <reg name="CLIDR" bitsize="32" type="int" regnum="103" group="cp_regs"/>
+    <reg name="AIDR" bitsize="32" type="int" regnum="104" group="cp_regs"/>
+    <reg name="CSSELR" bitsize="32" type="int" regnum="105" group="cp_regs"/>
+    <reg name="OSECCR_EL1" bitsize="32" type="int" regnum="106" group="cp_regs"/>
+    <reg name="DUMMY" bitsize="32" type="int" regnum="107" group="cp_regs"/>
+    <reg name="TEECR" bitsize="32" type="int" regnum="108" group="cp_regs"/>
+    <reg name="JIDR" bitsize="32" type="int" regnum="109" group="cp_regs"/>
+    <reg name="PMCCFILTR" bitsize="32" type="int" regnum="110" group="cp_regs"/>
+    <reg name="PMUSERENR" bitsize="32" type="int" regnum="111" group="cp_regs"/>
+    <reg name="PMINTENSET" bitsize="32" type="int" regnum="112" group="cp_regs"/>
+    <reg name="DBGDSCRint" bitsize="32" type="int" regnum="113" group="cp_regs"/>
+    <reg name="PMINTENCLR" bitsize="32" type="int" regnum="114" group="cp_regs"/>
+    <reg name="DBGBVR1_EL1" bitsize="32" type="int" regnum="115" group="cp_regs"/>
+    <reg name="DBGBCR1_EL1" bitsize="32" type="int" regnum="116" group="cp_regs"/>
+    <reg name="DBGWVR1_EL1" bitsize="32" type="int" regnum="117" group="cp_regs"/>
+    <reg name="DBGWCR1_EL1" bitsize="32" type="int" regnum="118" group="cp_regs"/>
+    <reg name="ID_PFR0" bitsize="32" type="int" regnum="119" group="cp_regs"/>
+    <reg name="ID_DFR0" bitsize="32" type="int" regnum="120" group="cp_regs"/>
+    <reg name="ID_AFR0" bitsize="32" type="int" regnum="121" group="cp_regs"/>
+    <reg name="ID_MMFR0" bitsize="32" type="int" regnum="122" group="cp_regs"/>
+    <reg name="ID_MMFR1" bitsize="32" type="int" regnum="123" group="cp_regs"/>
+    <reg name="ID_MMFR2" bitsize="32" type="int" regnum="124" group="cp_regs"/>
+    <reg name="ID_MMFR3" bitsize="32" type="int" regnum="125" group="cp_regs"/>
+    <reg name="DBGVCR" bitsize="32" type="int" regnum="126" group="cp_regs"/>
+    <reg name="DUMMY" bitsize="32" type="int" regnum="127" group="cp_regs"/>
+    <reg name="DACR" bitsize="32" type="int" regnum="128" group="cp_regs"/>
+    <reg name="OSDLR_EL1" bitsize="32" type="int" regnum="129" group="cp_regs"/>
+    <reg name="MDCCINT_EL1" bitsize="32" type="int" regnum="130" group="cp_regs"/>
+    <reg name="MDSCR_EL1" bitsize="32" type="int" regnum="131" group="cp_regs"/>
+    <reg name="DBGBVR2_EL1" bitsize="32" type="int" regnum="132" group="cp_regs"/>
+    <reg name="DBGBCR2_EL1" bitsize="32" type="int" regnum="133" group="cp_regs"/>
+    <reg name="ID_ISAR0" bitsize="32" type="int" regnum="134" group="cp_regs"/>
+    <reg name="ID_ISAR1" bitsize="32" type="int" regnum="135" group="cp_regs"/>
+    <reg name="ID_ISAR2" bitsize="32" type="int" regnum="136" group="cp_regs"/>
+    <reg name="ID_ISAR3" bitsize="32" type="int" regnum="137" group="cp_regs"/>
+    <reg name="ID_ISAR4" bitsize="32" type="int" regnum="138" group="cp_regs"/>
+    <reg name="ID_ISAR5" bitsize="32" type="int" regnum="139" group="cp_regs"/>
+    <reg name="ID_MMFR4" bitsize="32" type="int" regnum="140" group="cp_regs"/>
+    <reg name="ID_ISAR6" bitsize="32" type="int" regnum="141" group="cp_regs"/>
+    <reg name="TTBR0_EL1" bitsize="32" type="int" regnum="142" group="cp_regs"/>
+    <reg name="TTBR1_EL1" bitsize="32" type="int" regnum="143" group="cp_regs"/>
+    <reg name="DFAR" bitsize="32" type="int" regnum="144" group="cp_regs"/>
+    <reg name="WFAR" bitsize="32" type="int" regnum="145" group="cp_regs"/>
+    <reg name="TTBCR" bitsize="32" type="int" regnum="146" group="cp_regs"/>
+    <reg name="IFAR" bitsize="32" type="int" regnum="147" group="cp_regs"/>
+    <reg name="OSDTRTX_EL1" bitsize="32" type="int" regnum="148" group="cp_regs"/>
+    <reg name="DBGBVR3_EL1" bitsize="32" type="int" regnum="149" group="cp_regs"/>
+    <reg name="DBGBCR3_EL1" bitsize="32" type="int" regnum="150" group="cp_regs"/>
+    <reg name="DUMMY" bitsize="32" type="int" regnum="151" group="cp_regs"/>
+    <reg name="JMCR" bitsize="32" type="int" regnum="152" group="cp_regs"/>
+    <reg name="PMEVTYPER0" bitsize="32" type="int" regnum="153" group="cp_regs"/>
+    <reg name="PMEVTYPER1" bitsize="32" type="int" regnum="154" group="cp_regs"/>
+    <reg name="PMEVTYPER2" bitsize="32" type="int" regnum="155" group="cp_regs"/>
+    <reg name="PMEVTYPER3" bitsize="32" type="int" regnum="156" group="cp_regs"/>
+    <reg name="DBGCLAIMSET_EL1" bitsize="32" type="int" regnum="157" group="cp_regs"/>
+    <reg name="DBGBVR4_EL1" bitsize="32" type="int" regnum="158" group="cp_regs"/>
+    <reg name="DBGBCR4_EL1" bitsize="32" type="int" regnum="159" group="cp_regs"/>
+    <reg name="DUMMY" bitsize="32" type="int" regnum="160" group="cp_regs"/>
+    <reg name="SCTLR_EL1" bitsize="32" type="int" regnum="161" group="cp_regs"/>
+    <reg name="DFSR" bitsize="32" type="int" regnum="162" group="cp_regs"/>
+    <reg name="ACTLR_EL1" bitsize="32" type="int" regnum="163" group="cp_regs"/>
+    <reg name="CPACR_EL1" bitsize="32" type="int" regnum="164" group="cp_regs"/>
+    <reg name="IFSR" bitsize="32" type="int" regnum="165" group="cp_regs"/>
+    <reg name="FCSEIDR" bitsize="32" type="int" regnum="166" group="cp_regs"/>
+    <reg name="CONTEXTIDR_EL1" bitsize="32" type="int" regnum="167" group="cp_regs"/>
+    <reg name="TPIDRURW" bitsize="32" type="int" regnum="168" group="cp_regs"/>
+    <reg name="TPIDRURO" bitsize="32" type="int" regnum="169" group="cp_regs"/>
+    <reg name="TPIDRPRW" bitsize="32" type="int" regnum="170" group="cp_regs"/>
+    <reg name="L2LOCKDOWN" bitsize="32" type="int" regnum="171" group="cp_regs"/>
+    <reg name="L2AUXCR" bitsize="32" type="int" regnum="172" group="cp_regs"/>
+    <reg name="ACTLR_EL2" bitsize="32" type="int" regnum="173" group="cp_regs"/>
+    <reg name="DBGCLAIMCLR_EL1" bitsize="32" type="int" regnum="174" group="cp_regs"/>
+    <reg name="TEEHBR" bitsize="32" type="int" regnum="175" group="cp_regs"/>
+    <reg name="PMCR" bitsize="32" type="int" regnum="176" group="cp_regs"/>
+    <reg name="JOSCR" bitsize="32" type="int" regnum="177" group="cp_regs"/>
+    <reg name="PMCNTENSET" bitsize="32" type="int" regnum="178" group="cp_regs"/>
+    <reg name="PMCNTENCLR" bitsize="32" type="int" regnum="179" group="cp_regs"/>
+    <reg name="PMOVSR" bitsize="32" type="int" regnum="180" group="cp_regs"/>
+    <reg name="PMSELR" bitsize="32" type="int" regnum="181" group="cp_regs"/>
+  </feature>
+</target>

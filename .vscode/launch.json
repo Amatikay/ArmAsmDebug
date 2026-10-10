@@ -10,6 +10,10 @@
             "remote": true,
             "cwd": "${workspaceFolder}",
             "gdbpath": "gdb-multiarch",
+            "debugger_args": [
+                "-ex",
+                "set tdesc filename ${workspaceFolder}/virtual_device/tdesc.xml"
+            ],
             "stopAtConnect": true,
             "valuesFormatting": "parseText",
             "preLaunchTask": "QEMU",
