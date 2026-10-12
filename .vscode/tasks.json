@@ -2,15 +2,6 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "Build",
-            "type": "shell",
-            "command": "cmake -S . -B build && cmake --build build",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            }
-        },
-        {
             "label": "QEMU",
             "type": "shell",
             "dependsOn": "Build",
