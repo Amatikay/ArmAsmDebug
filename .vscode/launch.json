@@ -3,24 +3,25 @@
     "configurations": [
         {
             "name": "QEMU realview-pb-a8",
-            "type": "gdb",
-            "request": "attach",
-            "executable": "${workspaceFolder}/build/main.elf",
-            "target": ":1234",
-            "remote": true,
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/main.elf",
             "cwd": "${workspaceFolder}",
-            "gdbpath": "gdb-multiarch",
-            "debugger_args": [
-                "-ex",
-                "set tdesc filename ${workspaceFolder}/virtual_device/tdesc.xml"
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb-multiarch",
+            "miDebuggerServerAddress": "localhost:1234",
+            "stopAtEntry": true,
+            "setupCommands": [
+                {
+                    "text": "set tdesc filename ${workspaceFolder}/virtual_device/tdesc.xml",
+                    "ignoreFailures": false
+                },
+                {
+                    "text": "set output-radix 16"
+                }
             ],
-            "stopAtConnect": true,
-            "valuesFormatting": "parseText",
             "preLaunchTask": "QEMU",
-            "postDebugTask": "Stop QEMU",
-            "autorun": [
-                "set output-radix 16"
-            ]
+            "postDebugTask": "Stop QEMU"
         }
     ]
 }

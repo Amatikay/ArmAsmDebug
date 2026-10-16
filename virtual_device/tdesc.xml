@@ -233,6 +233,5 @@
     <reg name="PMCNTENSET" bitsize="32" type="int" regnum="178" group="cp_regs"/>
     <reg name="PMCNTENCLR" bitsize="32" type="int" regnum="179" group="cp_regs"/>
     <reg name="PMOVSR" bitsize="32" type="int" regnum="180" group="cp_regs"/>
-    <reg name="PMSELR" bitsize="32" type="int" regnum="181" group="cp_regs"/>
   </feature>
 </target>
