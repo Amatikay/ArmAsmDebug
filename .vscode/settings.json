@@ -1,0 +1,18 @@
+{
+    "debug.allowBreakpointsEverywhere": true,
+    "armls.defaultArchitecture": "A32",
+    "armls.externalDiagnostics.clang.args": [
+        "--target=armv7a-none-eabi"
+    ],
+    "[arm.aarch64-assembly]": {
+        "editor.detectIndentation": false,
+        "editor.insertSpaces": false,
+        "editor.tabSize": 4,
+        "editor.rulers": [
+            30,
+            60
+        ],
+        "editor.renderWhitespace": "none",
+        "files.trimTrailingWhitespace": true
+    }
+}
