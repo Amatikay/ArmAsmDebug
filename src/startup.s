@@ -1,14 +1,16 @@
-    .syntax unified
-    .arm
-    .section .vectors, "ax"
-    .global _start
+.syntax unified
+.arm
+.global _start
+
 _start:
-    ldr   sp, =__stack_top        @ стек из linker.ld
-    ldr   r0, =__bss_start        @ обнуляем .bss
-    ldr   r1, =__bss_end
-    mov   r2, #0
-1:  cmp   r0, r1
-    strlo r2, [r0], #4
-    blo   1b
-    bl    main                    @ переходим в C
-2:  b     2b                      @ если main вернётся
+	ldr sp, =__stack_top
+	ldr r1, =__bss_start
+	ldr r2, =__bss_end
+	mov r0, #0
+	bl zero_bss
+	b main
+zero_bss:
+	stmia r1!, {r0}
+	cmp r1, r2
+	bne zero_bss
+	bx lr

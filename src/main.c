@@ -1,5 +1,4 @@
 int foo(void);
-
 int main(void)
 {
     volatile int a = 0;
