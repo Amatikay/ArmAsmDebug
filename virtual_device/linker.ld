@@ -9,7 +9,7 @@ STACK_SIZE = 0x4000;
 
 SECTIONS
 {
-  .text   : { KEEP(*(.vectors)) *(.text*) } > RAM
+  .text : { KEEP(*(.vectors)) *(.text*) *(.rodata*) } > RAM
   .data   : { *(.data*) } > RAM
 
   .bss (NOLOAD) : ALIGN(4)
