@@ -6,11 +6,13 @@ _start:
 	ldr sp, =__stack_top
 	ldr r1, =__bss_start
 	ldr r2, =__bss_end
-	mov r0, #0
-	bl zero_bss
+	cmp r1, r2
+	movne r0, #0
+	blne zero_bss
 	b main
+
 zero_bss:
-	stmia r1!, {r0}
+	stmiane r1!, {r0}
 	cmp r1, r2
 	bne zero_bss
 	bx lr
