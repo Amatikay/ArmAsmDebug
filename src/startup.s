@@ -10,9 +10,11 @@ _start:
 	movne r0, #0
 	blne zero_bss
 	b main
-
+	b end @ if main return
 zero_bss:
 	stmiane r1!, {r0}
 	cmp r1, r2
 	bne zero_bss
 	bx lr
+end:
+	b .
